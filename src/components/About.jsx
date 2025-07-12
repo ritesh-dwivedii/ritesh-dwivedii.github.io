@@ -4,19 +4,19 @@ const About = () => {
   const skills = [
     {
       category: "Frontend",
-      technologies: "React, JavaScript, HTML/CSS"
+      technologies: "React, JavaScript, HTML/CSS, Tailwind CSS, Bootstrap, Material UI, JSP"
     },
     {
       category: "Backend",
-      technologies: "Node.js, Python, Databases"
+      technologies: "Node.js, Databases, Servlet, Rest API"
     },
     {
-      category: "Blockchain",
-      technologies: "Smart Contracts, Web3"
+      category: "Languages",
+      technologies: "Java, Python, JavaScript, SQL, C, C++"
     },
     {
       category: "Tools",
-      technologies: "Git, Docker, AWS"
+      technologies: "Git, Github, VS Code, Postman, MongoDB, MySQL"
     }
   ];
 

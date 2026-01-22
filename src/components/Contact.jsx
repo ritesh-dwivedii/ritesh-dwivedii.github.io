@@ -3,6 +3,16 @@ import { motion } from 'framer-motion';
 import { Mail, Send } from 'lucide-react';
 
 const Contact = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+
+    // Create mailto link
+    window.location.href = `mailto:riteshs2902@gmail.com?subject=Portfolio Contact from ${name}&body=${message} (from ${email})`;
+  };
+
   return (
     <section id="contact" className="py-20 relative">
       <div className="text-center mb-16">
@@ -15,15 +25,17 @@ const Contact = () => {
       </div>
 
       <div className="max-w-2xl mx-auto glass-card p-8 md:p-12">
-        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm font-medium text-slate-300">Name</label>
               <input
                 type="text"
                 id="name"
+                name="name"
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors text-slate-200"
                 placeholder="John Doe"
+                required
               />
             </div>
             <div className="space-y-2">
@@ -31,8 +43,10 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors text-slate-200"
                 placeholder="john@example.com"
+                required
               />
             </div>
           </div>
@@ -41,15 +55,18 @@ const Contact = () => {
             <label htmlFor="message" className="text-sm font-medium text-slate-300">Message</label>
             <textarea
               id="message"
+              name="message"
               rows="4"
               className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors text-slate-200 resize-none"
               placeholder="Tell me about your project..."
+              required
             />
           </div>
 
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            type="submit"
             className="w-full bg-primary hover:bg-indigo-500 text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
           >
             <Send size={20} />

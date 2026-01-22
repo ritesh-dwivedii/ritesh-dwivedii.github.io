@@ -45,7 +45,7 @@ const Navbar = () => {
                         <a href="https://github.com/ritesh-dwivedii" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
                             <Github size={20} />
                         </a>
-                        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
+                        <a href="https://www.linkedin.com/in/ritesh-dwivedi-66a337256" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
                             <Linkedin size={20} />
                         </a>
                     </div>

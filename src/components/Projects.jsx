@@ -3,9 +3,19 @@ import React from 'react';
 const Projects = () => {
   const projects = [
     {
+      title: "Task Flow",
+      description: "Microservices-based system for managing employees and tasks with role-based access, Service Discovery, and API Gateway. Tech Stack: Spring Boot, React, MySQL.",
+      link: "https://github.com/D1-92821-Ritesh/Employee-Task-Managment-System"
+    },
+    {
       title: "Donationchain",
-      description: "A blockchain-based donation platform ensuring transparency and trust in charitable giving",
+      description: "Blockchain-based donation platform ensuring transparency and trust with an immutable ledger. Tech Stack: Express, EJS, Solidity.",
       link: "https://github.com/ritesh-dwivedii/Donationchain"
+    },
+    {
+      title: "Stayzy",
+      description: "Rental booking platform with real-time availability and secure payments. Tech Stack: Node.js, Express.js, MongoDB.",
+      link: "https://github.com/ritesh-dwivedii/stayzy"
     },
     {
       title: "PharmacyStore",
@@ -16,11 +26,6 @@ const Projects = () => {
       title: "Spotify Clone",
       description: "A web-based music streaming application inspired by Spotify with modern UI/UX",
       link: "https://github.com/ritesh-dwivedii/spotify-clone"
-    },
-    {
-      title: "Stayzy",
-      description: "A modern accommodation booking platform with real-time availability and secure payments",
-      link: "https://github.com/ritesh-dwivedii/stayzy"
     },
     {
       title: "Real-Trust",
@@ -42,7 +47,7 @@ const Projects = () => {
           <li key={index}>
             <a href={project.link} target="_blank" rel="noopener noreferrer">
               <strong>{project.title}</strong>
-              <br/>
+              <br />
               <span style={{ fontSize: '0.9rem', color: '#718096' }}>
                 {project.description}
               </span>

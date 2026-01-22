@@ -44,15 +44,6 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Scroll indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
-            >
-                <span className="text-slate-500 text-sm">Scroll Down</span>
-            </motion.div>
         </section>
     );
 };

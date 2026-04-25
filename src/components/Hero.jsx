@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight } from 'lucide-react';
+import { ArrowDownRight, FileDown } from 'lucide-react';
 
 const Hero = () => {
     return (
@@ -23,9 +23,20 @@ const Hero = () => {
                             </h1>
 
                             <div className="flex flex-wrap items-center gap-12 mt-16">
-                                <p className="max-w-xl text-xl text-bone/60 leading-relaxed editorial-text italic">
-                                    "An adaptable polyglot engineer dedicated to building resilient, high-impact digital systems. Bridging technical complexity with elegant solutions."
-                                </p>
+                                <div className="max-w-xl space-y-8">
+                                    <p className="text-xl text-bone/60 leading-relaxed editorial-text italic">
+                                        "An adaptable polyglot engineer dedicated to building resilient, high-impact digital systems. Bridging technical complexity with elegant solutions."
+                                    </p>
+                                    <a 
+                                        href="/Resume2.pdf" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-4 px-8 py-4 bg-graphite border border-white/5 rounded-full shadow-neo-out hover:shadow-neo-in transition-all group"
+                                    >
+                                        <FileDown size={18} className="text-ochre group-hover:scale-110 transition-transform" />
+                                        <span className="font-mono text-[10px] tracking-[0.3em] text-bone/60 group-hover:text-ochre transition-colors uppercase">Download CV</span>
+                                    </a>
+                                </div>
                                 <div className="hidden md:block w-px h-24 bg-white/10" />
                                 <div className="flex flex-col gap-2">
                                     <span className="font-mono text-[10px] text-bone/40 uppercase tracking-widest">Core Philosophy</span>

@@ -19,10 +19,11 @@ const Navbar = () => {
         { name: 'Works', href: '#projects' },
         { name: 'Logs', href: '#experience' },
         { name: 'Contact', href: '#contact' },
+        { name: 'CV', href: '/Resume2.pdf', isExternal: true },
     ];
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4' : 'py-8'}`}>
+        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 bg-ebony/60 backdrop-blur-xl border-b border-white/5 shadow-lg' : 'py-8 bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <a href="#home" className="group flex items-center gap-4">
                     <div className="w-10 h-10 bg-graphite border border-white/10 rounded-xl flex items-center justify-center shadow-neo-out group-hover:shadow-neo-in transition-all">
@@ -37,6 +38,8 @@ const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
+                            target={link.isExternal ? "_blank" : undefined}
+                            rel={link.isExternal ? "noopener noreferrer" : undefined}
                             className="text-[10px] font-mono uppercase tracking-[0.3em] text-bone/50 hover:text-ochre transition-all"
                         >
                             {link.name}
@@ -70,14 +73,16 @@ const Navbar = () => {
                         className="fixed inset-0 bg-ebony z-40 md:hidden flex flex-col items-center justify-center gap-10"
                     >
                         {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                className="text-4xl font-serif font-bold text-bone hover:text-ochre transition-colors"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {link.name}
-                            </a>
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    target={link.isExternal ? "_blank" : undefined}
+                                    rel={link.isExternal ? "noopener noreferrer" : undefined}
+                                    className="text-4xl font-serif font-bold text-bone hover:text-ochre transition-colors"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {link.name}
+                                </a>
                         ))}
                     </motion.div>
                 )}

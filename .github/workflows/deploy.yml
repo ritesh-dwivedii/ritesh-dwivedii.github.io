@@ -36,9 +36,6 @@ jobs:
       - name: Build the React app
         run: npm run build
 
-      - name: Copy Resume2.pdf to dist folder
-        run: cp Resume2.pdf dist/
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 

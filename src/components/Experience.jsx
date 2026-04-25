@@ -1,94 +1,88 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award } from 'lucide-react';
 
 const Experience = () => {
-    const education = [
+    const experiences = [
         {
-            degree: "PG-DAC",
-            institution: "Sunbeam (ACTS, C-DAC), Pune",
-            period: "Aug 2025 - Feb 2026",
-            desc: "Post Graduate Diploma in Advanced Computing"
-        },
-        {
-            degree: "Master of Computer Application",
-            institution: "IPS Academy, Indore",
-            period: "Sep 2023 - Jun 2025",
-            desc: "Specialized in Computer Applications"
-        },
-        {
-            degree: "Bachelor of Science",
-            institution: "PTSNS University, Shahdol",
-            period: "Jul 2018 - Sep 2022",
-            desc: "Undergraduate Degree"
+            role: "Software Development Engineer",
+            company: "Toolstr",
+            period: "Present",
+            desc: "Engineering 'Super Local Delivery' (a robust logistics & route optimization ecosystem) and 'Apploy' (a high-performance mobile app builder). Focusing on scalable product architectures and real-time synchronization systems."
         }
     ];
 
-    const achievements = [
-        "Global Rank 2091 in TCS CodeVita Season 12 (2024)",
-        "Deloitte Australia Technology Job Simulation (2025)",
-        "Infosys Springboard Certification (HTML, CSS, JS)",
-        "TCS iON Communication Skills Certification (2025)"
+    const education = [
+        {
+            degree: "PG-DAC Certified",
+            institution: "Sunbeam (ACTS, C-DAC), Pune",
+            desc: "Advanced Diploma in Computing covering full-stack software engineering and professional development."
+        },
+        {
+            degree: "Master of Computer Applications (MCA)",
+            institution: "IPS Academy, Indore",
+            desc: "Core computer science fundamentals and software application development."
+        }
     ];
 
     return (
-        <section id="experience" className="py-20">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">
-                    Education & <span className="gradient-text">Achievements</span>
-                </h2>
-                <p className="text-slate-400">My academic journey and professional milestones.</p>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-12">
-                {/* Education Column */}
-                <div>
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">
-                        <GraduationCap className="text-primary" /> Education
-                    </h3>
-                    <div className="space-y-6">
-                        {education.map((edu, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="glass-card p-6 relative overflow-hidden group"
-                            >
-                                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-purple-600" />
-                                <h4 className="text-xl font-bold text-slate-100">{edu.degree}</h4>
-                                <p className="text-primary font-medium mb-1">{edu.institution}</p>
-                                <div className="flex justify-between items-center text-sm text-slate-400 mt-2">
-                                    <span>{edu.period}</span>
-                                </div>
-                            </motion.div>
-                        ))}
+        <section id="experience" className="py-32 px-6 md:px-12 relative">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-12 gap-20">
+                    <div className="lg:col-span-4">
+                        <h2 className="text-6xl font-serif font-bold leading-none sticky top-32 uppercase">
+                            Career <br />
+                            <span className="text-ochre">& Logs</span>
+                        </h2>
+                        <p className="mt-8 text-bone/40 font-mono text-xs uppercase tracking-widest leading-loose">
+                            [ System_Registry / Professional_Timeline ]
+                        </p>
                     </div>
-                </div>
 
-                {/* Achievements Column */}
-                <div>
-                    <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">
-                        <Award className="text-yellow-400" /> Achievements
-                    </h3>
-                    <div className="space-y-4">
-                        {achievements.map((achievement, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                whileHover={{ scale: 1.02 }}
-                                className="glass-card p-5 flex items-start gap-4 hover:bg-white/10 transition-colors"
-                            >
-                                <div className="min-w-8 h-8 rounded-full bg-yellow-400/10 flex items-center justify-center text-yellow-400">
-                                    <Award size={16} />
-                                </div>
-                                <p className="text-slate-300">{achievement}</p>
-                            </motion.div>
-                        ))}
+                    <div className="lg:col-span-8 space-y-24">
+                        {/* Work Experience */}
+                        <div className="space-y-16">
+                            <h3 className="font-mono text-[10px] text-ochre uppercase tracking-[0.4em] mb-8 block">/ Professional_Experience</h3>
+                            {experiences.map((exp, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="relative pb-16 border-b border-white/5"
+                                >
+                                    <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
+                                        <div>
+                                            <h4 className="text-4xl font-serif font-bold text-bone mb-2">{exp.role}</h4>
+                                            <p className="text-ochre font-mono text-xs uppercase tracking-widest">{exp.company}</p>
+                                        </div>
+                                        <div className="text-right">
+                                            <span className="font-mono text-xs text-bone/40 uppercase tracking-widest">{exp.period}</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-xl text-bone/60 editorial-text italic leading-relaxed max-w-3xl">
+                                        "{exp.desc}"
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Education */}
+                        <div className="space-y-16 pt-16 border-t border-white/5">
+                            <h3 className="font-mono text-[10px] text-ochre uppercase tracking-[0.4em] mb-8 block">/ Academic_Milestones</h3>
+                            {education.map((edu, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="relative"
+                                >
+                                    <h4 className="text-3xl font-serif font-bold text-bone mb-2">{edu.degree}</h4>
+                                    <p className="text-ochre font-mono text-xs uppercase tracking-widest mb-4">{edu.institution}</p>
+                                    <p className="text-bone/40 text-sm leading-relaxed max-w-2xl">{edu.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

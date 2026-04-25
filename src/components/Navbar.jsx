@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Code2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -16,44 +16,47 @@ const Navbar = () => {
 
     const navLinks = [
         { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Projects', href: '#projects' },
+        { name: 'Works', href: '#projects' },
+        { name: 'Logs', href: '#experience' },
         { name: 'Contact', href: '#contact' },
     ];
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
+        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-4' : 'py-8'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                <a href="#" className="flex items-center gap-2 text-2xl font-bold font-display tracking-tighter">
-                    <Code2 className="text-primary" />
-                    <span>Ritesh.dev</span>
+                <a href="#home" className="group flex items-center gap-4">
+                    <div className="w-10 h-10 bg-graphite border border-white/10 rounded-xl flex items-center justify-center shadow-neo-out group-hover:shadow-neo-in transition-all">
+                        <span className="font-serif font-bold text-ochre text-xl">R</span>
+                    </div>
+                    <span className="font-mono text-[10px] tracking-[0.3em] text-bone/60 group-hover:text-ochre transition-colors uppercase">Ritesh_Dwivedi</span>
                 </a>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-12">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium hover:text-primary transition-colors"
+                            className="text-[10px] font-mono uppercase tracking-[0.3em] text-bone/50 hover:text-ochre transition-all"
                         >
                             {link.name}
                         </a>
                     ))}
-                    <div className="flex gap-4 ml-4 pl-4 border-l border-white/10">
-                        <a href="https://github.com/ritesh-dwivedii" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
-                            <Github size={20} />
-                        </a>
-                        <a href="https://www.linkedin.com/in/ritesh-dwivedi-66a337256" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">
-                            <Linkedin size={20} />
-                        </a>
-                    </div>
+                    <div className="w-px h-6 bg-white/10" />
+                    <a 
+                        href="#contact" 
+                        className="text-[10px] uppercase font-mono tracking-widest text-ochre hover:text-white transition-colors"
+                    >
+                        Inquiry
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
-                <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X /> : <Menu />}
+                <button 
+                    className="md:hidden w-12 h-12 bg-graphite rounded-xl border border-white/5 flex items-center justify-center shadow-neo-out"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    {isOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
             </div>
 
@@ -61,16 +64,16 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 w-full glass-nav border-t border-white/10 md:hidden flex flex-col items-center py-8 gap-6"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        className="fixed inset-0 bg-ebony z-40 md:hidden flex flex-col items-center justify-center gap-10"
                     >
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-lg font-medium hover:text-primary transition-colors"
+                                className="text-4xl font-serif font-bold text-bone hover:text-ochre transition-colors"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}

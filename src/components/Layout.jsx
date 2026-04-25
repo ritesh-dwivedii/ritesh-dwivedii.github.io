@@ -4,15 +4,18 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-200 relative overflow-hidden">
-            {/* Background Gradient Mesh */}
-            <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-700/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-700/20 rounded-full blur-[120px]" />
+        <div className="relative min-h-screen bg-ebony selection:bg-ochre/30 selection:text-ochre">
+            {/* Film Grain Texture */}
+            <div className="noise-overlay" />
+            
+            {/* Background Decorative Shapes (Minimalist) */}
+            <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-[10%] left-[5%] w-[1px] h-[80%] bg-white/5" />
+                <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-ochre/5 rounded-full blur-[150px]" />
             </div>
 
             <Navbar />
-            <main className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 py-24 sm:py-32">
+            <main className="relative z-10">
                 {children}
             </main>
             <Footer />

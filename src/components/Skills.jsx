@@ -1,83 +1,81 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Server, Database, Terminal, Layout } from 'lucide-react';
 
 const Skills = () => {
-    const scaleVariants = {
-        hover: { scale: 1.05, transition: { duration: 0.2 } },
-        tap: { scale: 0.95 }
-    };
-
-    const skillCategories = [
+    const categories = [
         {
-            title: "Frontend",
-            icon: <Layout className="w-6 h-6 text-blue-400" />,
-            skills: ["React.js", "Tailwind CSS", "HTML5", "CSS3", "JavaScript", "Bootstrap"]
+            title: "Core Logic",
+            skills: ["Java", "Spring Boot", "Node.js", "C#", "Express", "Microservices"]
         },
         {
-            title: "Backend",
-            icon: <Server className="w-6 h-6 text-purple-400" />,
-            skills: ["Java", "Spring Boot", "Node.js", "Express.js", "C#", ".NET Core"]
+            title: "Interfaces",
+            skills: ["React.js", "TypeScript", "Tailwind CSS", "Next.js", "Redux"]
         },
         {
-            title: "Databases",
-            icon: <Database className="w-6 h-6 text-green-400" />,
-            skills: ["MySQL", "MongoDB", "SQL Server", "PostgreSQL"]
+            title: "Data Persistence",
+            skills: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "SQL Server"]
         },
         {
-            title: "Languages",
-            icon: <Code className="w-6 h-6 text-yellow-400" />,
-            skills: ["Java", "Python", "JavaScript", "C++", "C#", "SQL"]
-        },
-        {
-            title: "Tools & DevOps",
-            icon: <Terminal className="w-6 h-6 text-red-400" />,
-            skills: ["Git", "GitHub", "Docker", "Jenkins", "Postman", "VS Code"]
+            title: "DevOps & Systems",
+            skills: ["Docker", "Jenkins", "Git", "CI/CD Pipelines", "Postman", "Vite"]
         }
     ];
 
     return (
-        <section id="skills" className="py-20 relative">
-            <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-bold font-display mb-4">
-                    Technical <span className="gradient-text">Skills</span>
-                </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">
-                    A comprehensive toolkit of technologies I use to build scalable and efficient solutions.
-                </p>
-            </div>
+        <section id="skills" className="py-32 px-6 md:px-12 bg-ebony relative overflow-hidden">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-32">
+                    <h2 className="text-7xl md:text-[10rem] font-serif font-bold opacity-[0.03] leading-none tracking-tighter absolute top-10 left-1/2 -translate-x-1/2 w-full uppercase pointer-events-none">VERSATILITY</h2>
+                    <h2 className="text-5xl md:text-8xl font-serif font-bold text-ochre tracking-tighter relative z-10 uppercase">TECHNICAL ARSENAL</h2>
+                    <p className="font-mono text-xs tracking-[0.5em] text-bone/30 mt-8 uppercase">
+                        [ Polyglot Capability / Engineering Adaptability ]
+                    </p>
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {skillCategories.map((category, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        whileHover="hover"
-                        whileTap="tap"
-                        variants={scaleVariants}
-                        className="glass-card p-6 border-t-4 border-t-transparent hover:border-t-primary transition-all group"
-                    >
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="p-3 bg-slate-800 rounded-lg group-hover:bg-slate-700 transition-colors">
-                                {category.icon}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5 relative z-10">
+                    {categories.map((cat, index) => (
+                        <div key={index} className="bg-ebony p-12 hover:bg-white/[0.01] transition-colors border-white/5">
+                            <span className="font-mono text-[10px] text-ochre/40 uppercase tracking-[0.4em] mb-12 block">
+                                0{index + 1} / {cat.title}
+                            </span>
+                            <ul className="space-y-6">
+                                {cat.skills.map((skill, i) => (
+                                    <motion.li 
+                                        key={i}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.05 }}
+                                        className="text-2xl font-serif text-bone/60 hover:text-ochre transition-colors cursor-default"
+                                    >
+                                        {skill}
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Footer Meta Details */}
+                <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+                    <div className="font-mono text-[10px] text-bone/20 leading-relaxed uppercase tracking-[0.3em] max-w-sm">
+                        High adaptability across diverse tech stacks / 
+                        Focus on product-driven engineering / 
+                        DevOps-aware implementation
+                    </div>
+                    <div className="flex gap-4">
+                        {[1, 2, 3].map(i => (
+                            <div key={i} className="w-12 h-1 bg-white/5 rounded-full overflow-hidden">
+                                <motion.div 
+                                    className="h-full bg-ochre/40"
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: "70%" }}
+                                    transition={{ duration: 1.5, delay: i * 0.2 }}
+                                />
                             </div>
-                            <h3 className="text-xl font-bold">{category.title}</h3>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                            {category.skills.map((skill, i) => (
-                                <span
-                                    key={i}
-                                    className="px-3 py-1 bg-white/5 rounded-full text-sm text-slate-300 border border-white/5 hover:border-primary/50 transition-colors"
-                                >
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );

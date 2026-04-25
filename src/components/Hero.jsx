@@ -1,49 +1,59 @@
 import React from 'react';
-import { ArrowRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ArrowDownRight } from 'lucide-react';
 
 const Hero = () => {
     return (
-        <section id="home" className="min-h-[85vh] flex items-center justify-center relative">
-            <div className="text-center max-w-4xl mx-auto px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <span className="inline-block px-4 py-2 rounded-full glass-card text-primary text-sm font-medium mb-6">
-                        Available for Hire
-                    </span>
-                    <h1 className="text-5xl md:text-7xl font-bold font-display tracking-tight mb-6">
-                        Building digital <br />
-                        <span className="gradient-text">experiences that matter</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                        I'm a Full-Stack Developer specializing in building exceptional digital experiences.
-                        Currently leveraging the power of modern web technologies to solve complex problems.
-                    </p>
+        <section id="home" className="min-h-screen flex flex-col justify-center px-6 md:px-12 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto w-full pt-32">
+                <div className="grid lg:grid-cols-12 gap-8 items-end">
+                    <div className="lg:col-span-12">
+                        <motion.div
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                        >
+                            <span className="font-mono text-xs tracking-[0.4em] uppercase text-ochre mb-8 block">
+                                [ Software Development Engineer @ Toolstr ]
+                            </span>
+                            
+                            <h1 className="text-7xl md:text-[12rem] font-serif font-bold leading-[0.8] mb-12 tracking-tighter">
+                                RITESH <br />
+                                <span className="text-ochre italic font-light opacity-80">DWIVEDI</span>
+                            </h1>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a
-                            href="#projects"
-                            className="px-8 py-4 bg-primary text-white rounded-full font-medium hover:bg-indigo-500 transition-all flex items-center gap-2 group"
-                        >
-                            View Projects
-                            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                        </a>
-                        <a
-                            href="Ritesh_Dwivedi_Resume.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-8 py-4 glass-card hover:bg-white/10 transition-all rounded-full font-medium flex items-center gap-2"
-                        >
-                            Download Resume
-                            <Download size={20} />
-                        </a>
+                            <div className="flex flex-wrap items-center gap-12 mt-16">
+                                <p className="max-w-xl text-xl text-bone/60 leading-relaxed editorial-text italic">
+                                    "An adaptable polyglot engineer dedicated to building resilient, high-impact digital systems. Bridging technical complexity with elegant solutions."
+                                </p>
+                                <div className="hidden md:block w-px h-24 bg-white/10" />
+                                <div className="flex flex-col gap-2">
+                                    <span className="font-mono text-[10px] text-bone/40 uppercase tracking-widest">Core Philosophy</span>
+                                    <span className="font-serif text-3xl">Architecting Precision.</span>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
-                </motion.div>
+
+                    <div className="absolute bottom-12 right-12">
+                        <motion.a
+                            href="#projects"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="w-32 h-32 md:w-48 md:h-48 bg-graphite border border-white/5 rounded-full flex flex-col items-center justify-center shadow-neo-out hover:shadow-neo-in transition-all group overflow-hidden"
+                        >
+                            <ArrowDownRight className="text-ochre mb-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" size={40} />
+                            <span className="font-mono text-[10px] tracking-widest text-bone/60 group-hover:text-ochre transition-colors">EXPLORE</span>
+                        </motion.a>
+                    </div>
+                </div>
             </div>
 
+            {/* Background Accent Typography */}
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-[0.01] pointer-events-none select-none">
+                <span className="text-[35rem] font-serif font-bold leading-none -mr-40">RITESH</span>
+            </div>
         </section>
     );
 };

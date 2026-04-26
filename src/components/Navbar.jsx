@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Github, Linkedin, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 
@@ -51,11 +51,35 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Works', href: '#projects' },
-        { name: 'Logs', href: '#experience' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'About', href: '#about', description: 'Who I am & What I do' },
+        { name: 'Works', href: '#projects', description: 'Selected Design & Dev' },
+        { name: 'Logs', href: '#experience', description: 'Professional Journey' },
+        { name: 'Contact', href: '#contact', description: 'Let\'s build something' },
     ];
+
+    const menuVariants = {
+        closed: { opacity: 0, y: "-100%" },
+        open: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: [0.76, 0, 0.24, 1],
+                staggerChildren: 0.07,
+                delayChildren: 0.2
+            }
+        },
+        exit: {
+            opacity: 0,
+            y: "-100%",
+            transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] }
+        }
+    };
+
+    const linkVariants = {
+        closed: { opacity: 0, y: 20 },
+        open: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+    };
 
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${scrolled ? 'py-4' : 'py-8'}`}>
@@ -69,7 +93,7 @@ const Navbar = () => {
                 <div className="absolute inset-0 bg-white/60 dark:bg-ebony/60 backdrop-blur-xl border-b border-white/10" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative flex justify-between items-center">
+            <div className="max-w-7xl mx-auto px-6 relative z-[100] flex justify-between items-center">
                 <MagneticWrapper strength={0.2}>
                     <a href="#home" className="group flex items-center gap-4">
                         <div className="w-10 h-10 glass-panel rounded-xl flex items-center justify-center group-hover:border-ochre/50 transition-all">
@@ -140,25 +164,88 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 bg-white/95 dark:bg-ebony/95 backdrop-blur-2xl z-40 md:hidden flex flex-col items-center justify-center gap-10"
+                        variants={menuVariants}
+                        initial="closed"
+                        animate="open"
+                        exit="exit"
+                        className="fixed inset-0 bg-white dark:bg-ebony z-[90] md:hidden overflow-hidden flex flex-col"
                     >
-                        {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-5xl font-serif font-bold text-ink dark:text-bone hover:text-ochre transition-colors"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    {link.name}
-                                </a>
-                        ))}
+                        {/* Background Decor */}
+                        <div className="absolute inset-0 grid-overlay opacity-[0.03] dark:opacity-[0.05]" />
+                        <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center opacity-[0.02] dark:opacity-[0.03] pointer-events-none select-none">
+                            <span className="text-[20vw] font-serif font-bold rotate-90">MENU</span>
+                        </div>
+
+                        <div className="flex-1 flex flex-col justify-center px-10 relative">
+                            <motion.span 
+                                variants={linkVariants}
+                                className="font-mono text-[10px] uppercase tracking-[0.3em] text-ochre mb-12 block border-b border-ochre/20 pb-4"
+                            >
+                                Navigation
+                            </motion.span>
+                            
+                            <div className="flex flex-col gap-8">
+                                {navLinks.map((link) => (
+                                    <motion.div key={link.name} variants={linkVariants}>
+                                        <a
+                                            href={link.href}
+                                            className="group flex flex-col gap-1"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            <div className="flex items-end gap-4">
+                                                <span className="text-5xl font-serif font-bold text-ink dark:text-bone group-hover:text-ochre transition-colors">
+                                                    {link.name}
+                                                </span>
+                                                <ExternalLink size={16} className="mb-2 opacity-0 group-hover:opacity-100 transition-all text-ochre -translate-x-2 group-hover:translate-x-0" />
+                                            </div>
+                                            <span className="font-mono text-[9px] uppercase tracking-widest text-ink/30 dark:text-bone/30 group-hover:text-ochre/60 transition-colors">
+                                                {link.description}
+                                            </span>
+                                        </a>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Mobile Menu Footer */}
+                        <motion.div 
+                            variants={linkVariants}
+                            className="p-10 border-t border-ink/5 dark:border-white/5 bg-alabaster/50 dark:bg-white/[0.02] backdrop-blur-md relative"
+                        >
+                            <div className="flex flex-col gap-8">
+                                <div className="flex justify-between items-end">
+                                    <div className="flex flex-col gap-2">
+                                        <span className="font-mono text-[8px] uppercase tracking-widest text-ink/40 dark:text-bone/40">Connect</span>
+                                        <div className="flex gap-6">
+                                            <a href="https://github.com/ritesh-dwivedii" className="text-ink dark:text-bone hover:text-ochre transition-colors">
+                                                <Github size={20} />
+                                            </a>
+                                            <a href="https://linkedin.com/in/ritesh-dwivedi" className="text-ink dark:text-bone hover:text-ochre transition-colors">
+                                                <Linkedin size={20} />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <span className="font-mono text-[8px] uppercase tracking-widest text-ink/40 dark:text-bone/40 block mb-2">Availability</span>
+                                        <div className="flex items-center gap-2 justify-end">
+                                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                                            <span className="text-[10px] font-mono text-ink dark:text-bone">Available for Projects</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex justify-between items-center pt-8 border-t border-ink/5 dark:border-white/5">
+                                    <span className="font-mono text-[8px] uppercase tracking-tighter text-ink/20 dark:text-bone/20">© 2026 RD_SYSTEM</span>
+                                    <div className="flex items-center gap-2 text-[8px] font-mono text-ink/20 dark:text-bone/20">
+                                        <span>EN</span>
+                                        <div className="w-1 h-1 bg-ochre/20 rounded-full" />
+                                        <span>HI</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

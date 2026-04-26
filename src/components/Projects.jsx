@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Package, Smartphone } from 'lucide-react';
+import { Github, ExternalLink, Package, Smartphone, Code2, Globe } from 'lucide-react';
 
 const Projects = () => {
     const projects = [
@@ -29,7 +29,7 @@ const Projects = () => {
             tech: ["Spring Boot", "React", "Microservices"],
             desc: "A scalable enterprise task management ecosystem. Implements optimized resource allocation and role-based access control for distributed teams.",
             type: "Featured",
-            icon: <Github className="text-bone/40" size={24} />
+            icon: <Code2 className="text-ochre/40" size={24} />
         },
         {
             id: "04",
@@ -38,71 +38,80 @@ const Projects = () => {
             tech: ["Solidity", "Ethereum", "React"],
             desc: "A decentralized donation protocol ensuring radical transparency in philanthropy. Uses immutable ledger technology to track and verify donation impact.",
             type: "Featured",
-            icon: <Github className="text-bone/40" size={24} />
+            icon: <Globe className="text-ochre/40" size={24} />
         }
     ];
 
     return (
-        <section id="projects" className="py-32 px-6 md:px-12 bg-ebony">
+        <section id="projects" className="py-32 px-6 md:px-12 bg-alabaster dark:bg-ebony transition-colors duration-700">
             <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-12">
-                    <div className="max-w-3xl">
-                        <h2 className="text-6xl md:text-[8rem] font-serif font-bold mb-8 leading-none uppercase tracking-tighter">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-32 gap-8 md:gap-12">
+                    <div className="max-w-4xl">
+                        <h2 className="text-[12vw] md:text-8xl lg:text-[10rem] font-serif font-bold mb-6 md:mb-8 leading-[0.9] md:leading-[0.8] uppercase tracking-tighter text-ink dark:text-bone">
                             SELECTED <br />
-                            <span className="ochre-accent italic">WORKS</span>
+                            <span className="text-ochre italic font-light">WORKS</span>
                         </h2>
-                        <p className="text-bone/40 font-mono text-xs tracking-widest uppercase mt-4">
-                            [ Professional & Featured Projects / Engineering Precision ]
+                        <p className="text-ink/40 dark:text-bone/40 font-mono text-[8px] md:text-[10px] tracking-[0.5em] uppercase mt-4 md:mt-8 flex items-center gap-4">
+                            <span className="h-px w-8 bg-ochre/20" />
+                            [ Engineering Precision / 2023 - 2024 ]
                         </p>
                     </div>
                 </div>
 
-                <div className="space-y-px border-y border-white/5">
+                <div className="space-y-px border-y border-white/10">
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="group relative grid md:grid-cols-12 items-center py-20 hover:bg-white/[0.02] transition-colors"
+                            className="group relative grid grid-cols-1 md:grid-cols-12 items-center py-12 md:py-24 hover:bg-white dark:hover:bg-white/[0.01] transition-all duration-700 border-b border-white/5"
                         >
                             <div className="md:col-span-1 hidden md:block">
-                                <span className="font-mono text-xs text-ochre/40 group-hover:text-ochre transition-colors">{project.id}</span>
+                                <span className="font-mono text-[10px] text-ochre/40 group-hover:text-ochre transition-colors tracking-widest">{project.id}</span>
                             </div>
                             
                             <div className="md:col-span-4 mb-6 md:mb-0">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone/30">{project.category}</span>
-                                    <span className="px-2 py-0.5 border border-ochre/20 text-ochre text-[8px] font-mono uppercase tracking-widest rounded">{project.type}</span>
+                                <div className="flex items-center gap-4 mb-4 md:mb-6">
+                                    <span className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-ink/30 dark:text-bone/30">{project.category}</span>
+                                    <span className="px-2 py-0.5 border border-ochre/20 text-ochre text-[7px] md:text-[8px] font-mono uppercase tracking-widest rounded">{project.type}</span>
                                 </div>
-                                <h3 className="text-4xl md:text-5xl font-serif font-bold group-hover:translate-x-4 transition-transform">{project.title}</h3>
+                                <h3 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-ink dark:text-bone md:group-hover:translate-x-6 transition-transform duration-700 ease-out">{project.title}</h3>
                             </div>
 
-                            <div className="md:col-span-4 mb-8 md:mb-0">
-                                <p className="text-lg text-bone/60 editorial-text max-w-sm italic">
+                            <div className="md:col-span-4 mb-6 md:mb-0 md:px-8">
+                                <p className="text-lg md:text-xl text-ink/60 dark:text-bone/60 leading-relaxed font-light italic">
                                     "{project.desc}"
                                 </p>
                             </div>
 
                             <div className="md:col-span-2 flex flex-wrap gap-2 mb-8 md:mb-0">
                                 {project.tech.map((t, i) => (
-                                    <span key={i} className="text-[10px] font-mono border border-white/10 px-3 py-1 text-bone/40 group-hover:border-ochre/30 group-hover:text-ochre transition-colors">{t}</span>
+                                    <span key={i} className="text-[8px] md:text-[9px] font-mono border border-white/10 px-2 md:px-3 py-1 text-ink/40 dark:text-bone/40 group-hover:border-ochre/30 group-hover:text-ochre transition-colors rounded-full">{t}</span>
                                 ))}
                             </div>
 
-                            <div className="md:col-span-1 flex justify-end">
-                                <div className="w-14 h-14 bg-graphite rounded-full flex items-center justify-center shadow-neo-out hover:shadow-neo-in transition-all">
+                            <div className="md:col-span-1 flex justify-start md:justify-end">
+                                <motion.div 
+                                    whileHover={{ scale: 1.1, rotate: 5 }}
+                                    className="w-12 h-12 md:w-16 md:h-16 glass-panel rounded-2xl flex items-center justify-center group-hover:border-ochre/50 transition-all cursor-pointer"
+                                >
                                     {project.icon}
-                                </div>
+                                </motion.div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                <div className="mt-32 text-center">
-                    <a href="https://github.com/ritesh-dwivedii" className="tactile-button inline-flex items-center gap-6 py-6 px-12 text-sm font-mono tracking-widest text-ochre uppercase group">
-                        Enter Archive <ExternalLink size={20} className="group-hover:rotate-45 transition-transform" />
-                    </a>
+                <div className="mt-40 text-center">
+                    <motion.a 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        href="https://github.com/ritesh-dwivedii" 
+                        className="inline-flex items-center gap-8 py-8 px-16 glass-panel rounded-full text-[10px] font-mono tracking-[0.5em] text-ochre uppercase group hover:border-ochre"
+                    >
+                        Enter Archive <ExternalLink size={18} className="group-hover:rotate-45 transition-transform duration-500" />
+                    </motion.a>
                 </div>
             </div>
         </section>
